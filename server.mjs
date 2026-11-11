@@ -1,7 +1,8 @@
 import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
-const root = resolve('dist');
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('./dist', import.meta.url));
 const types = { '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.svg':'image/svg+xml', '.json':'application/json; charset=utf-8', '.zip':'application/zip', '.cmd':'application/octet-stream' };
 const server = http.createServer(async (req, res) => {
   try {

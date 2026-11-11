@@ -1,32 +1,21 @@
 # DeGoogleYourself
 
-Friares fristående projekt för GitHub. Packa upp ZIP-filen och lägg innehållet i ett eget repo, exempelvis `degoogleyourself`. Inga tidigare Git-repon eller Sites-inställningar ingår.
+Friares fristående kodprojekt för lokal körning. Skapa en flyttplan från Googles tjänster och följ guiderna för de alternativ du väljer.
 
-## Publicera
+## Ladda ner och kör lokalt
 
-- **GitHub Pages:** Ladda upp hela projektet till grenen `main`. Under **Settings → Pages → Build and deployment** väljer du **GitHub Actions**. Det medföljande arbetsflödet publicerar `dist/`.
-- **Cloudflare Pages:** Anslut repot eller ladda upp `dist/` som statiska filer. Prova projektnamnet `degoogleyourself` för en gratis `pages.dev`-adress. Cloudflare bekräftar namnet när projektet skapas.
+1. [Ladda ner projektet som ZIP](https://github.com/Altisdank/degoogleyourself/archive/refs/heads/main.zip) och packa upp filen.
+2. Öppna en terminal i mappen `degoogleyourself-main`, där `package.json` finns.
+3. Kör `npm start` eller `node server.mjs`. Node.js 20 eller senare behövs.
+4. Öppna [http://127.0.0.1:4173](http://127.0.0.1:4173) i webbläsaren.
+
+Inga npm-paket behöver installeras. Avsluta den lokala servern med Ctrl+C.
 
 ## Valfri e-postförifyllning med Google
 
-Skapa ett OAuth-klient-ID av typen webbapplikation i Google Cloud. Lägg till webbplatsens origin (protokoll och värd utan sökväg) som godkänd JavaScript-origin. Klistra in det publika klient-ID:t i meta-taggen `google-oauth-client-id` i `dist/index.html`. Lägg aldrig in någon klienthemlighet.
+Skapa ett OAuth-klient-ID av typen webbapplikation i Google Cloud. Lägg till den lokala adressen `http://127.0.0.1:4173` som godkänd JavaScript-origin. Klistra in det publika klient-ID:t i meta-taggen `google-oauth-client-id` i `dist/index.html`. Lägg aldrig in någon klienthemlighet.
 
 Bitwarden-flödet läser den verifierade e-postadressen med `openid email` när användaren väljer Google. Uppgiften används för att fylla i Bitwardens inloggning i den valda regionen. Utan klient-ID går det att ange adressen själv. Själva lösenordsimporten godkänns i Bitwardens datorapp.
-
-# Friare
-
-En svensk webbplats för att byta från Google i sin egen takt. Välj alternativ till Gmail, Chrome, Google Sök, Drive, Googles lösenordshanterare och Google Foto. Friare skapar en lokal flyttplan med officiella guider och en valbar Windows-hjälp.
-
-## Starta lokalt
-
-Kräver Node.js 20 eller senare. Inga paket behöver installeras.
-
-```powershell
-cd friare
-node server.mjs
-```
-
-Öppna http://127.0.0.1:4173. Om du redan står i projektmappen behövs inte `cd friare`. Modulerna behöver en webbserver; dubbelklicka inte på `index.html`.
 
 ## Vad fungerar?
 
@@ -75,12 +64,11 @@ node --check dist/catalog.js
 node --check dist/downloads.js
 node --check dist/state.js
 node --test tests/*.test.mjs
-python scripts/package_source.py
 ```
 
-Kör paketeringen efter källändringar för att uppdatera den nedladdningsbara ZIP-filen. ZIP-filen utesluter Git, hostingidentitet, lokala inställningar, tidigare arkiv och personliga flyttplaner.
+GitHub skapar nedladdningsfilen från de filer som ingår i grenen `main`.
 
-Friare använder inga externa typsnitt eller analysverktyg. Om e-postförifyllning konfigureras laddar Bitwarden-flödet Googles inloggningsbibliotek. Driftleverantören kan hantera vanliga anslutningsloggar. När användaren öppnar en extern tjänst gäller dess villkor.
+Friare använder inga externa typsnitt eller analysverktyg. Om e-postförifyllning konfigureras laddar Bitwarden-flödet Googles inloggningsbibliotek. När användaren öppnar en extern tjänst gäller dess villkor.
 
 ## Filer
 
