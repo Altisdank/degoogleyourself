@@ -2,6 +2,8 @@
 
 Friares fristående kodprojekt för lokal körning. Skapa en flyttplan från Googles tjänster och följ guiderna för de alternativ du väljer.
 
+Kontakt för projektet: [degooglify@proton.com](mailto:degooglify@proton.com).
+
 ## Ladda ner och kör lokalt
 
 1. [Ladda ner projektet som ZIP](https://github.com/Altisdank/degoogleyourself/archive/refs/heads/main.zip) och packa upp filen.
